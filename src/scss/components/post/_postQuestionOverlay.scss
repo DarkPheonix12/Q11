@@ -1,0 +1,135 @@
+.post-question-container {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  height: 100vh;
+  width: 100%;
+  z-index: 3;
+  @include addPrefixes(transition, opacity 0.3s);
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+
+    .question {
+      bottom: -18em;
+    }
+  }
+
+  .question {
+    position: absolute;
+    width: 100%;
+    background-color: $post-question-box-color;
+    color: #ffffff;
+    padding: 1em 1.8em;
+    bottom: 0;
+    z-index: 4;
+    @include addPrefixes(transition, bottom 0.3s);
+
+    .spinner-container:not(:first-child) {
+      padding: 0.5em 0;
+      font-size: 0.8em;
+    }
+
+    &-number {
+      font-size: 2.4em;
+    }
+
+    &-text {
+      padding-top: 2.5em;
+      font-size: 0.93em;
+      text-align: center;
+    }
+
+    form {
+      padding: 2.5em 0;
+
+      textarea {
+        position: relative;
+        width: 100%;
+        border: none;
+        background-color: $post-question-box-color;
+        font-weight: 500;
+        outline: none;
+        font-size: 1em;
+        resize: none;
+        color: #ffffff;
+      }
+    }
+
+    &-answer {
+      padding: 2.5em 0 1.25em 0;
+    }
+
+    .divider {
+      position: relative;
+      border-bottom: 1px solid #c68400;
+
+      .btn {
+        position: absolute;
+        right: 1em;
+        top: -1.365em;
+        height: 2.73em;
+        width: 2.73em;
+        border-radius: 100%;
+        z-index: 1;
+
+        svg {
+          height: 2.2em;
+          width: 2.2em;
+          path {
+            fill: #000000;
+          }
+        }
+      }
+    }
+
+    &-buttons {
+      padding-top: 2.5em;
+      display: flex;
+      align-items: center;
+
+      &.form-open {
+        .icon {
+          margin-right: 0.5em;
+        }
+      }
+
+      &.owner {
+        .icon.share {
+          margin-right: 0;
+        }
+      }
+
+      a {
+        color: $secondary-color-lighter;
+        font-size: 0.93em;
+      }
+
+      .icon {
+        height: 1.33em;
+        width: 1.33em;
+        cursor: pointer;
+
+        svg {
+          height: 100%;
+          width: 100%;
+
+          path {
+            fill: $secondary-color-lighter;
+            fill-opacity: 1;
+          }
+        }
+
+        &.share {
+          margin-right: 1em;
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}

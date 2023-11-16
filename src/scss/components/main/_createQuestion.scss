@@ -1,0 +1,117 @@
+.create-question {
+  background: $secondary-color-darker;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  .create-question-header {
+    padding: 20px 20px 20px 28px;
+    border-bottom: 0.5px solid #c68400;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      font-size: 1.33em;
+    }
+
+    .arrow-down {
+      padding: 5px;
+    }
+  }
+
+  form {
+    padding: 1.33em;
+    height: calc(100vh - 69px - 8.67em);
+
+    textarea {
+      width: 100%;
+      height: 100%;
+      resize: none;
+      border: none;
+      background-color: $secondary-color-darker;
+      border-radius: 2px;
+      outline: none;
+      font-size: 1.33em;
+
+      &::placeholder {
+        font-style: normal;
+        font-weight: 900;
+        font-size: 1.33em;
+        color: #000000;
+      }
+
+      &:focus {
+        border: none;
+      }
+    }
+  }
+
+  .create-question-footer {
+    .hashtags {
+      margin-top: auto;
+      position: relative;
+      width: 100%;
+      border-bottom: 0.5px solid #c68400;
+      border-top: 0.5px solid #c68400;
+      padding: 1.6em 1.27em 1.6em 1.27em;
+      margin-bottom: 38px;
+      height: 6.13em;
+      max-height: 6.13em;
+      overflow-y: scroll;
+      z-index: 1;
+
+      .hashtag {
+        font-size: 0.933em;
+
+        &.placeholder {
+          color: #ffffff;
+        }
+      }
+    }
+
+    .hashtag-elements {
+      width: 100%;
+      height: 6.13em;
+      max-height: 6.13em;
+      bottom: 2.44em;
+      position: absolute;
+
+      .char-counter {
+        position: absolute;
+        font-size: 0.933em;
+        font-weight: 600;
+        letter-spacing: 1.25px;
+        right: 0.67em;
+        top: -1.6em;
+      }
+
+      .add-hashtag-button {
+        position: absolute;
+        height: 2.8em;
+        width: 2.8em;
+        @include addPrefixes(
+          box-shadow,
+          (
+            0px 0px 3.425px rgba(0, 0, 0, 0.12),
+            0px 2px 3.425px rgba(0, 0, 0, 0.24)
+          )
+        );
+        border-radius: 100%;
+        z-index: 2;
+        right: 0.67em;
+        bottom: -1.2em;
+
+        svg {
+          height: 100%;
+          width: 100%;
+          transform: scale(1.02);
+
+          path {
+            fill: #000000;
+          }
+        }
+      }
+    }
+  }
+}

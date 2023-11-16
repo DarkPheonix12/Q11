@@ -1,0 +1,186 @@
+.discuss {
+  .answer-card {
+    background-color: #ffffff;
+    border-bottom: 0.5px solid #000050;
+    display: flex;
+    align-items: center;
+    color: $qa-box-font-color;
+    .user-img-rounded {
+      height: 3.67em;
+      min-width: 3.67em;
+      max-width: 3.67em;
+      margin: 0 1em 0 1em;
+    }
+
+    .answer-content {
+      width: 100%;
+      margin-right: 24px;
+      margin-top: 20px;
+      .full-name {
+        font-size: 1.067em;
+      }
+      .username {
+        font-weight: 600;
+        color: $secondary-color-darker;
+        font-size: 0.8em;
+      }
+
+      .text {
+        font-size: 0.8em;
+        margin-top: 5px;
+
+        .text-tag {
+          font-weight: 500;
+          color: $secondary-color-darker;
+        }
+      }
+
+      .more-button {
+        padding: 0.4em 0 0.4em 0.4em;
+        margin-bottom: 4px;
+        width: fit-content;
+        margin-left: auto;
+
+        .more-button-dot {
+          position: relative;
+          width: 0.2em;
+          height: 0.2em;
+          background-color: #a8a8a8;
+          border-radius: 100%;
+          &:first-child {
+            margin-bottom: 2px;
+          }
+          &:last-child {
+            margin-top: 2px;
+          }
+        }
+      }
+    }
+
+    .likes {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 24px 0 auto;
+
+      svg {
+        fill: $qa-box-font-color;
+        width: 1.33em;
+        height: 1.223em;
+        margin-bottom: 3px;
+        path {
+          stroke: $qa-box-font-color;
+        }
+      }
+
+      .likes-count {
+        font-size: 0.67em;
+      }
+
+      &.liked {
+        svg {
+          fill: $primary-color;
+          animation: $popOut;
+          path {
+            stroke: $primary-color;
+          }
+        }
+      }
+    }
+
+    &.answer-form {
+      background: #ededed;
+      border: none;
+      @include addPrefixes(
+        box-shadow,
+        (
+          0px 0px 4.55882px rgba(0, 0, 0, 0.12),
+          0px 4.55882px 4.55882px rgba(0, 0, 0, 0.24)
+        )
+      );
+
+      form {
+        position: relative;
+        margin: 22px 22px 22px 0;
+        width: 100%;
+        textarea {
+          width: 100%;
+          height: 6.6em;
+          padding: 9px;
+          resize: none;
+          border: 0.5px solid #bcbcbc;
+          border-radius: 2px;
+          outline: none;
+          overflow: hidden;
+          font-size: 0.8em;
+
+          &::placeholder {
+            font-style: italic;
+          }
+
+          &:focus {
+            border: 0.5px solid $secondary-color-darker;
+          }
+        }
+
+        .add-answer-button {
+          position: absolute;
+          height: 2.73em;
+          width: 2.73em;
+          @include addPrefixes(
+            box-shadow,
+            (
+              0px 0px 3.425px rgba(0, 0, 0, 0.12),
+              0px 2px 3.425px rgba(0, 0, 0, 0.24)
+            )
+          );
+          border-radius: 100%;
+          right: 0;
+          z-index: 2;
+
+          &::before {
+            position: absolute;
+            content: "";
+            width: 1em;
+            border-bottom: 2px solid #000000;
+            left: calc(50% - 0.5em);
+            top: 50%;
+            @include addPrefixes(transition, transform 0.3s ease-in-out);
+          }
+
+          &::after {
+            position: absolute;
+            content: "";
+            width: 1em;
+            border-bottom: 2px solid #000000;
+            transform: rotate(90deg);
+            left: calc(50% - 0.5em);
+            top: 50%;
+            @include addPrefixes(transition, transform 0.3s ease-in-out);
+          }
+
+          &:disabled {
+            &::before,
+            &::after {
+              border: none;
+            }
+          }
+        }
+
+        .char-counter {
+          position: absolute;
+          top: -1.3em;
+          right: 0;
+          font-size: 0.67em;
+        }
+      }
+    }
+    // &:nth-child(3) {
+    //   border: none;
+    // }
+    // &:last-child {
+    //   border-bottom: 0.5px solid #000050;
+    // }
+  }
+}

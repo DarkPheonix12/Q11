@@ -1,0 +1,72 @@
+.home {
+  .tag-list,
+  .following-recent-activity {
+    width: 100%;
+    .swiper-wrapper {
+      width: fit-content;
+      margin-right: 100%;
+      .swiper-slide {
+        width: auto;
+        &:first-child {
+          margin-left: 10px;
+        }
+        &:last-child {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .btn {
+      font-size: 0.73em;
+    }
+  }
+
+  .tag-list {
+    margin: 20px 0 20px 0;
+    .swiper-wrapper {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+  .user-img-rounded {
+    width: 64px;
+    height: 64px;
+    border: 5.2px solid $primary-color-darker;
+    background: $primary-color;
+    margin: 21px 0 21px 0;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  .home-cards {
+    margin: 20px auto 0 auto;
+    width: 98%; // Adjust For Home Page Masonry
+    .card {
+      .card-avatar,
+      .card-avatar-w-img {
+        margin: 0 0 10px 0;
+        align-self: center;
+        justify-self: center;
+      }
+
+      .card-content {
+        .card-title {
+          -webkit-line-clamp: 3;
+        }
+        .card-text {
+          -webkit-line-clamp: 5;
+        }
+      }
+    }
+  }
+
+  &.create-menu-open {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -ms-filter: blur(3px);
+    -o-filter: blur(3px);
+    filter: blur(3px);
+    pointer-events: none;
+  }
+}

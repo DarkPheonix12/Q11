@@ -1,0 +1,61 @@
+@import "discuss/addQuestionButton";
+@import "discuss/answerCard";
+@import "discuss/QABox";
+@import "discuss/questionHeader";
+
+.discuss {
+  .quriosity,
+  .all-questions,
+  .question,
+  .impacts,
+  .saved {
+    &.empty {
+      height: calc(100vh - 178px); // 100vh - header - discuss-menu - footer
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .discuss-empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      .discuss-owl {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 12px;
+        .owl {
+          margin-bottom: 6px;
+        }
+      }
+
+      .discuss-empty-title {
+        font-family: Roboto;
+        font-size: 1.33em;
+        text-align: center;
+        margin-bottom: 21px;
+      }
+
+      .btn {
+        font-size: 10px;
+        letter-spacing: 0.9px;
+        width: 106px;
+        height: 27px;
+      }
+    }
+  }
+
+  .questions,
+  .answers {
+    .spinner-container {
+      font-size: 10px;
+    }
+  }
+
+  .not-found {
+    text-align: center;
+  }
+}

@@ -1,0 +1,209 @@
+@include media1200 {
+  //~~~~~~SIGN IN~~~~~~~
+  .circles {
+    &.w-footer {
+      img {
+        height: 96%;
+      }
+    }
+  }
+
+  .landing {
+    background-position: 0% 90%;
+  }
+
+  .header {
+    background: #000051;
+    height: 56px;
+    .header-button {
+      display: none;
+    }
+
+    .header-title {
+      display: none;
+    }
+  }
+
+  .sign-in-container {
+    width: 70%;
+  }
+
+  .sign-in {
+    width: 70%;
+
+    h1 {
+      width: fit-content;
+      margin: 46px 0 46px 0;
+      span::after {
+        left: auto;
+        right: -6.8px;
+
+        bottom: 12px;
+      }
+    }
+
+    .sign-in-login-form {
+      position: relative;
+      z-index: 1;
+      height: fit-content;
+      display: block;
+      width: 70%;
+
+      .input-control:nth-child(2) {
+        input {
+          margin-bottom: 12px;
+        }
+      }
+
+      input {
+        background-color: $primary-color;
+        border-radius: 1.2em;
+        margin-bottom: 1.6em;
+        height: 2.27em;
+        padding-left: 2.6em;
+        font-size: 0.93em;
+        color: #ffffff;
+
+        &:-webkit-autofill {
+          @include addPrefixes(
+            box-shadow,
+            0 0 0px 100px $primary-color inset !important
+          );
+          -webkit-text-fill-color: #ffffff !important;
+          color: #ffffff !important;
+          caret-color: #ffffff;
+          font-family: "Roboto", sans-serif !important;
+          font-size: 0.93em;
+        }
+
+        &::placeholder {
+          color: rgba(250, 250, 250, 0.5);
+          font-weight: 600;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: #ffffff;
+        font-style: italic;
+        font-weight: 800;
+        font-size: 0.8em;
+        margin-bottom: 70px;
+      }
+
+      .form-buttons {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 83px;
+
+        .btn {
+          &:first-child {
+            margin: 0;
+          }
+        }
+
+        a {
+          margin: 0;
+          font-style: normal;
+        }
+      }
+    }
+
+    .buttons {
+      display: none;
+    }
+
+    .notification {
+      width: 70%;
+    }
+  }
+
+  .register,
+  .login {
+    h1 {
+      display: block;
+      span::after {
+        background: $primary-color-darker;
+      }
+    }
+
+    .register-form,
+    .login-form {
+      width: 70%;
+      padding: 0;
+      top: 0;
+
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0;
+        .btn-primary {
+          display: flex;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  .footer {
+    bottom: 9%;
+
+    .footer-text {
+      color: #ffffff;
+
+      a {
+        color: #ffffff;
+      }
+    }
+  }
+
+  .login {
+    .btn {
+      width: 100%;
+    }
+    .login-form {
+      .btn-transparent {
+        display: flex;
+      }
+    }
+  }
+
+  //~~~~~~~~MAIN SECTION~~~~~~~~
+  .home,
+  .library,
+  .discuss,
+  .profile {
+    .home-cards,
+    .library-cards {
+      width: 80%;
+    }
+  }
+
+  .card {
+    width: 23%;
+    margin: 0 10px 10px 10px;
+  }
+
+  .notification {
+    font-size: 19px;
+  }
+}
+
+@include media1600 {
+  .container,
+  .notification {
+    font-size: 17px;
+  }
+
+  .grid-sizer {
+    width: 20%;
+  }
+
+  .card {
+    width: 18%;
+  }
+}

@@ -1,0 +1,372 @@
+.post-container {
+  width: 92%;
+  margin: 0 auto;
+}
+
+.post {
+  min-height: 100vh;
+  color: $post-text-color;
+  background-color: $body-background-color;
+  overflow: hidden;
+  @include addPrefixes(transition, filter 0.3s);
+
+  &.yellow {
+    background-color: #ffecbf;
+  }
+
+  &.gray {
+    background-color: #e7e7e7;
+  }
+
+  &.dark {
+    background-color: #343434;
+
+    .post-overlay {
+      background-color: rgba(48, 48, 48, 0.6);
+
+      &-fontsize {
+        .font-size {
+          input[type="range"] {
+            --upper-color: #dddddd;
+          }
+        }
+      }
+    }
+
+    .post-header > .icon,
+    .post-info > .post-info-description {
+      svg {
+        path {
+          fill: $post-text-color-lighter;
+        }
+      }
+    }
+
+    .post-header {
+      &-content {
+        .title {
+          color: $post-text-color-lighter;
+        }
+      }
+    }
+
+    .post-content {
+      .post-text {
+        h1,
+        h2,
+        h3 {
+          color: $post-text-color-lighter;
+        }
+
+        *[data-question-id] {
+          text-shadow: 0px 0.5px 2px rgba($post-text-color-lighter, 1);
+        }
+      }
+
+      .icon {
+        svg {
+          path {
+            fill: $post-text-color-lighter;
+          }
+        }
+      }
+    }
+
+    .os-scrollbar-track::before {
+      background: $post-text-color-lighter !important;
+      width: 3px !important;
+    }
+  }
+
+  &.question-overlay-open {
+    @include addPrefixes(filter, blur(4px));
+  }
+
+  &-header {
+    position: relative;
+    display: flex;
+    padding: 0.6em 1.2em 0.6em 1.2em;
+    border-bottom: 0.5px solid #d8d8d8;
+    background-color: inherit;
+    z-index: 2;
+
+    .icon {
+      padding: 0.7em;
+      margin-right: 1.4em;
+      align-self: center;
+
+      &:last-child {
+        margin-left: auto;
+        margin-right: -0.7em;
+      }
+
+      svg {
+        path {
+          fill: #000000;
+        }
+      }
+    }
+
+    &-content {
+      .title {
+        font-size: 1.33em;
+        color: $post-text-color-darker;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .author {
+        font-size: 0.93em;
+        color: $primary-color;
+        width: fit-content;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-info {
+    position: relative;
+    margin: 2em 0;
+    z-index: 1;
+    user-select: none;
+    @include addPrefixes(transition, (top 0.3s, margin-bottom 0.3s));
+
+    &-description {
+      &,
+      &-text,
+      &-title > svg {
+        @include addPrefixes(transition, all 0.3s);
+      }
+
+      &-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 0.87em;
+        font-size: 0.93em;
+        cursor: pointer;
+      }
+
+      &-text {
+        font-size: 1.07em;
+        opacity: 0;
+        max-height: 0px;
+        overflow-y: auto;
+      }
+
+      &.show {
+        margin-bottom: 1.5em;
+
+        .post-info-description-text {
+          max-height: 15em;
+          padding-right: 1.8em;
+          opacity: 1;
+          line-height: 1.2em;
+        }
+
+        .post-info-description-title {
+          svg {
+            transform: rotate(-180deg);
+          }
+        }
+      }
+    }
+
+    &-hashtags {
+      display: flex;
+      font-size: 0.73em;
+      margin-bottom: 0.2em;
+
+      .hashtag:not(:last-child) {
+        margin-right: 0.47em;
+      }
+
+      .hashtag {
+        color: $primary-color;
+      }
+    }
+
+    &-genre {
+      font-size: 0.73em;
+      margin-bottom: 0.2em;
+    }
+
+    &-statistics {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.67em;
+      margin-bottom: 1.5em;
+    }
+  }
+
+  &-content {
+    position: relative;
+    font-size: 1.067em;
+    top: 0;
+    @include addPrefixes(transition, height 0.3s);
+
+    .post-text {
+      * {
+        font-family: "Times New Roman", Times, serif;
+        color: $post-text-color;
+        user-select: none;
+        pointer-events: none;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: $post-text-color-darker;
+      }
+
+      *[data-question-id] {
+        cursor: pointer;
+        pointer-events: auto;
+        margin-left: -27px;
+        text-shadow: 0px 0.5px 1px rgba(0, 0, 0, 0.5);
+        color: #b4b4b4 !important;
+        text-decoration: none !important;
+        font-size: 1em !important;
+        font-weight: normal !important;
+        font-style: normal !important;
+        text-align: left !important;
+        * {
+          color: #b8b8b8 !important;
+          text-align: left !important;
+          text-decoration: none !important;
+          font-style: normal !important;
+          font-weight: normal !important;
+        }
+      }
+    }
+
+    .active {
+      background-color: rgb(252, 170, 48);
+      color: #000000;
+    }
+
+    .icon,
+    .scrollbar-progress-vertical {
+      @include addPrefixes(transition, opacity 0.3s);
+    }
+
+    & > .icon {
+      position: absolute;
+      right: -1px;
+      top: 0;
+      opacity: 1;
+      z-index: 3;
+      cursor: auto;
+
+      svg {
+        path {
+          fill: #000000;
+        }
+      }
+    }
+
+    .scrollbar-progress-vertical {
+      padding-top: 2.1em;
+      position: absolute;
+      top: 0;
+      right: 8px;
+      width: 3px;
+      z-index: 3;
+      height: 100%;
+      opacity: 1;
+      pointer-events: none;
+      user-select: none;
+      .scroll-progress-bar {
+        background: $secondary-color !important;
+        width: 100%;
+      }
+    }
+
+    & > .hide {
+      opacity: 0;
+    }
+  }
+  .os-scrollbar-track::before {
+    background: #000000 !important;
+    width: 3px !important;
+  }
+
+  .os-scrollbar-vertical {
+    margin-top: 2em;
+    z-index: 3;
+  }
+
+  .os-theme-round-dark.os-host-transition
+    > .os-scrollbar
+    > .os-scrollbar-track
+    > .os-scrollbar-handle:before {
+    box-sizing: border-box;
+    background: $secondary-color;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+  }
+
+  .os-host {
+    padding: 0 27px;
+    @include addPrefixes(transition, (top 0.3s, height 0.3s));
+  }
+
+  .os-content-glue {
+    @include addPrefixes(transition, (top 0.3s, height 0.3s));
+  }
+
+  .os-theme-dark
+    > .os-scrollbar:hover
+    > .os-scrollbar-track
+    > .os-scrollbar-handle {
+    background: $secondary-color;
+  }
+
+  .os-theme-dark
+    > .os-scrollbar
+    > .os-scrollbar-track
+    > .os-scrollbar-handle.active {
+    background: $secondary-color;
+  }
+}
+
+.loading-post {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  @include addPrefixes(box-shadow, inset -12px 0 12px -7px rgba(0, 0, 0, 0.6));
+
+  .spinner-container {
+    margin: 0;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    height: 70%;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+    @include addPrefixes(box-shadow, -10px 0 20px 2px rgba(0, 0, 0, 0.6));
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    height: 40%;
+    border-radius: 50%;
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+    @include addPrefixes(box-shadow, -10px 0 30px 4px rgba(0, 0, 0, 0.6));
+  }
+}

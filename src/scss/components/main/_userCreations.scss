@@ -1,0 +1,118 @@
+.user-creations {
+  &.create-menu-open {
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -ms-filter: blur(3px);
+    -o-filter: blur(3px);
+    filter: blur(3px);
+    pointer-events: none;
+  }
+
+  .published,
+  .unpublished {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .card {
+      height: 12.8em;
+      .card-header {
+        margin: 0;
+        .card-header-icons {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.4em;
+
+          .icon {
+            display: flex;
+            svg {
+              height: 100%;
+              width: 1.07em;
+              path {
+                fill: $secondary-color-darker;
+                fill-opacity: 1;
+              }
+            }
+          }
+        }
+      }
+
+      .card-content {
+        margin-bottom: 0.4em;
+      }
+
+      .card-footer {
+        flex-direction: column;
+        height: 100%;
+
+        .published-footer {
+          width: 100%;
+          padding: 0.3em 0.4em;
+          letter-spacing: 0.03em;
+          display: flex;
+          justify-content: space-between;
+          margin-top: auto;
+
+          .published-date {
+            font-size: 0.6em;
+          }
+
+          .minutes-read {
+            font-size: 0.67em;
+            color: $secondary-color-darker;
+          }
+        }
+
+        .updated-date {
+          margin: auto 0 0 auto;
+          font-size: 0.6em;
+          padding: 0.3em 0.4em;
+          letter-spacing: 0.03em;
+          color: $primary-color;
+        }
+      }
+    }
+  }
+
+  .unpublished {
+    .card {
+      .user-img-rounded {
+        margin-top: 1em;
+      }
+
+      .card-content {
+        margin-bottom: 0em;
+      }
+    }
+  }
+}
+
+.your-creations-menu {
+  .swiper-wrapper {
+    .swiper-slide {
+      a {
+        padding: 2px;
+
+        svg {
+          width: 100%;
+          height: 1.3em;
+          path {
+            fill: #ffffff;
+            fill-opacity: 0.5;
+          }
+        }
+
+        &.current {
+          svg {
+            height: 1.5em;
+            path {
+              fill-opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}

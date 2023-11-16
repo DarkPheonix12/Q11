@@ -1,0 +1,72 @@
+// landing
+@import "config";
+@import "components/landing/landing";
+@import "components/landing/landingDesktop";
+@import "components/landing/signIn";
+@import "components/landing/login";
+@import "components/landing/register";
+@import "components/landing/footer";
+@import "components/landing/header";
+@import "components/landing/circles";
+// main
+@import "components/main/footer";
+@import "components/main/header";
+@import "components/main/home";
+@import "components/main/library";
+@import "components/main/discuss";
+// other
+@import "components/main/createQuestion";
+@import "components/main/sideDrawer";
+@import "components/main/subHeader";
+// create
+@import "components/create/createDefault";
+// profile
+@import "components/main/profile";
+@import "components/main/profileFollowers";
+// user creations
+@import "components/main/userCreations";
+// settings
+@import "components/main/settings";
+// modals
+@import "components/modals/postStatsModal";
+@import "components/modals/confirmationDialogModal";
+@import "components/modals/postViewOverlayPreviewModal";
+// post view
+@import "components/post/postView";
+@import "components/post/postViewOverlay";
+@import "components/post/postQuestionOverlay";
+@import "components/post/postQuestionViewAllAnswers";
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  padding: 0;
+  margin: 0;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+svg {
+  pointer-events: none;
+}
+
+body {
+  background-color: $body-background-color;
+}
+
+#root {
+  height: 100vh;
+}
+
+.container {
+  font-size: 0.9375rem; // 15px
+}
+
+.firebase-emulator-warning {
+  display: none;
+}
+
+@import "screenOptimization/screenSmall";
+@import "screenOptimization/screenMedium";
+@import "screenOptimization/screenLarge";

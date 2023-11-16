@@ -1,0 +1,86 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwnerOfDoc() {
+      return request.auth.uid == resource.data.createdBy.userId;
+    }
+
+    function isLoggedIn() {
+      return request.auth != null;
+    }
+
+    function isPrivate() {
+      return resource.data.isPrivate;
+    }
+
+    function isPublished() {
+      return resource.data.isPublished;
+    }
+
+    match /beta_users/{user} {
+      allow create: if true;
+    }
+
+    match /users/{user} {
+      allow read, create: if true;
+      allow update: if request.auth.uid == user;
+    }
+
+    match /questions/{question} {
+    	allow read: if true;
+    	allow create: if isLoggedIn();
+      allow update, delete: if isOwnerOfDoc();
+    }
+
+    match /answers/{answer} {
+    	allow read: if true;
+    	allow create: if isLoggedIn();
+      allow update, delete: if isOwnerOfDoc();
+    }
+
+    match /userActivity/{userActivity} {
+      allow create: if isLoggedIn();
+      allow read, write: if request.auth.uid == userActivity;
+    }
+
+    match /following/{follow} {
+      allow create: if isLoggedIn();
+      allow read: if isLoggedIn() && request.auth.uid == resource.data.followedUserId || request.auth.uid == resource.data.followerUserId;
+      allow delete: if isLoggedIn() && request.auth.uid == resource.data.followerUserId;
+    }
+
+    match /posts/{post} {
+      allow create: if isLoggedIn();
+      allow read: if (isPrivate() == false && isPublished()) || isOwnerOfDoc();
+      allow update, delete: if isOwnerOfDoc() && isPublished() == false;
+
+      function postUserId() {
+        return get(/databases/$(database)/documents/posts/$(post)).data.createdBy.userId
+      }
+
+      function isPostPublished() {
+        return get(/databases/$(database)/documents/posts/$(post)).data.isPublished
+      }
+
+      match /content/{content} {
+        allow create: if request.auth.uid == postUserId();
+        allow update: if request.auth.uid == postUserId() && isPostPublished() == false;
+        allow read: if true;
+      }
+
+      match /questions/{question} {
+        allow create: if request.auth.uid == postUserId();
+        allow read: if true;
+
+        
+      }
+    }
+
+    match /postQuestionAnswers/{answer} {
+      allow read: if resource.data.isPrivate == false || isOwnerOfDoc();
+      allow update, delete: if isOwnerOfDoc();
+      allow delete: if true;
+      allow create: if isLoggedIn();
+    }    
+  }
+}

@@ -1,0 +1,160 @@
+.side-drawer-mask {
+  position: fixed;
+  display: hidden;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  @include addPrefixes(
+    transition,
+    all 0.3s cubic-bezier(0.11, 0.88, 0.42, 0.92)
+  );
+  background: rgba(0, 0, 0, 0.5);
+
+  &.drawer-open {
+    display: block;
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+.side-drawer {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  color: #757575;
+  z-index: 4;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+  transform: translateX(-100%);
+  @include addPrefixes(
+    transition,
+    all 0.3s cubic-bezier(0.11, 0.88, 0.42, 0.92)
+  );
+
+  &.drawer-open {
+    transform: translateX(0);
+  }
+
+  .drawer-container {
+    overflow-y: scroll;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    height: 100%;
+    width: 100%;
+    @include addPrefixes(
+      box-shadow,
+      (0px 9px 18px rgba(0, 0, 0, 0.18), 0px 5.5px 5px rgba(0, 0, 0, 0.24))
+    );
+
+    .user-info {
+      position: relative;
+      color: #ffffff;
+      background: $primary-color;
+      .user-info-cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+
+        img {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .user-info-content {
+        position: relative;
+        padding: 15px;
+        z-index: 2;
+
+        .user-img-rounded {
+          width: 67px;
+          height: 67px;
+          margin-bottom: 9px;
+
+          &.default {
+            background: white;
+            padding: 10px;
+            svg {
+              width: 100%;
+              height: 100%;
+              path {
+                fill: $secondary-color;
+              }
+            }
+          }
+        }
+
+        .full-name,
+        .user-email {
+          font-weight: 500;
+          font-size: 14px;
+        }
+      }
+
+      .full-name {
+        margin-bottom: 5px;
+      }
+    }
+
+    .drawer-navigation {
+      padding-right: 0;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      .drawer-item {
+        background: #ffffff;
+        display: flex;
+        align-items: center;
+        padding: 18px;
+        cursor: pointer;
+
+        &.current {
+          svg {
+            rect,
+            path {
+              fill: $secondary-color-darker;
+              @include addPrefixes(
+                transition,
+                all 0.3s cubic-bezier(0.11, 0.88, 0.42, 0.92)
+              );
+            }
+          }
+
+          .discuss-icon {
+            path:nth-child(2) {
+              fill: #ffffff;
+            }
+          }
+        }
+
+        .drawer-item-icon {
+          display: flex;
+          justify-content: center;
+          width: 30px;
+        }
+
+        h2 {
+          font-size: 0.933em;
+          margin-left: 32px;
+        }
+      }
+
+      .drawer-footer {
+        margin-top: auto;
+        border-top: 0.5px solid #757575;
+      }
+    }
+  }
+}

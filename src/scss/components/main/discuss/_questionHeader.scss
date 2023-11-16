@@ -1,0 +1,166 @@
+.discuss {
+  .question-header {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    background: $primary-color-darker;
+    border-top: 0.5px solid #000050;
+    padding: 13px 20px 13px 20px;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    @include addPrefixes(
+      box-shadow,
+      (
+        0px 0px 4.55882px rgba(0, 0, 0, 0.12),
+        0px 4.55882px 4.55882px rgba(0, 0, 0, 0.24)
+      )
+    );
+    .user-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .user-img {
+        position: relative;
+        width: 3.33em;
+        height: 3.33em;
+        margin-right: 11px;
+
+        .user-img-rounded {
+          width: 3.33em;
+          height: 3.33em;
+        }
+
+        .follow-user-button {
+          position: relative;
+          margin-left: auto;
+          bottom: 0.93em;
+          width: 0.85em;
+          height: 0.85em;
+          background: $primary-color;
+          border-radius: 100%;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          &::before {
+            position: absolute;
+            content: "";
+            width: 0.4em;
+            border-bottom: 1px solid #ffffff;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 50%;
+          }
+
+          &::after {
+            position: absolute;
+            content: "";
+            width: 0.4em;
+            border-bottom: 1px solid #ffffff;
+            transform: translateX(-50%) rotate(90deg);
+            left: 50%;
+            top: 50%;
+          }
+        }
+      }
+      .user {
+        margin-right: auto;
+        .full-name {
+          font-size: 1.07em;
+        }
+        .username {
+          font-size: 0.67em;
+          font-weight: 400;
+        }
+      }
+    }
+    .qa-text {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      word-break: break-word;
+      overflow: hidden;
+      margin: 10px 0 13px 0;
+      font-size: 1.2em;
+      overflow: hidden;
+      &.full {
+        display: block;
+      }
+    }
+
+    .hashtags {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 0.667em;
+      color: $secondary-color;
+      margin-top: -0.33em;
+
+      .hashtag {
+        margin: 0.2em 0.33em 0 0;
+      }
+    }
+
+    .likes-share {
+      margin-top: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      div {
+        height: 1.826em;
+        width: 1.826em;
+        border-radius: 100%;
+        background: $icon-background-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .like-icon {
+        margin-right: 10px;
+
+        &:hover {
+          cursor: pointer;
+        }
+        svg {
+          width: 0.933em;
+          height: 0.867em;
+          fill: #888cb6;
+          path {
+            stroke: #888cb6;
+          }
+        }
+
+        &.liked {
+          svg {
+            fill: $secondary-color;
+            animation: $popOut;
+
+            path {
+              stroke: $secondary-color;
+            }
+          }
+        }
+      }
+
+      .share {
+        &:hover {
+          cursor: pointer;
+        }
+
+        svg {
+          width: 0.933em;
+          height: 1.07em;
+        }
+      }
+
+      .likes-count {
+        margin-right: auto;
+        font-size: 0.933em;
+      }
+    }
+  }
+}

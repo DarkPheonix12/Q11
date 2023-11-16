@@ -1,0 +1,986 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Galada&display=swap");
+
+// primary font-size is 15px - all em values are based on that.
+
+$primary-color-darker: #1a237e;
+$primary-color: #534bae;
+$primary-color-lighter: #9e65f0;
+$secondary-color-dark-yellow: #c68400;
+$secondary-color-darker: #ffb300;
+$secondary-color: #ffcf48;
+$secondary-color-lighter: #ffe54c;
+$card-type-color: #6a6a6a;
+$card-text-color: #6f6f6f;
+$icon-background-color: #4f5697;
+$qa-box-font-color: #585858;
+$body-background-color: #f6f6f6;
+$post-text-color: #919191;
+$post-text-color-darker: #464646;
+$post-text-color-lighter: #dddddd;
+$post-question-box-color: #18232a;
+
+$popOut: popOut 0.4s ease-in;
+
+@mixin addPrefixes($property, $content) {
+  -webkit-#{$property}: $content;
+  -moz-#{$property}: $content;
+  -ms-#{$property}: $content;
+  -o-#{$property}: $content;
+  #{$property}: $content;
+}
+
+@mixin setButtonColors($color, $darken-amount) {
+  background-color: $color;
+  &:hover,
+  &:focus {
+    background-color: darken($color: $color, $amount: $darken-amount);
+  }
+  &:disabled,
+  &:active {
+    background-color: darken(
+      $color: $color,
+      $amount: $darken-amount + $darken-amount * 1.1
+    );
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+.mt-1 {
+  margin-top: 24px;
+}
+
+.mt-2 {
+  margin-top: 36px;
+}
+
+.mt-3 {
+  margin-top: 48px;
+}
+
+.mb-1 {
+  margin-bottom: 24px;
+}
+
+.mb-2 {
+  margin-bottom: 36px;
+}
+
+.mb-3 {
+  margin-bottom: 48px;
+}
+
+.mb-4 {
+  margin-bottom: 110px;
+}
+
+.icon {
+  cursor: pointer;
+
+  &.sm {
+    height: 2em;
+    width: 2em;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &.md {
+    height: 3em;
+    width: 3em;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  &.lg {
+    height: 4em;
+    width: 4em;
+
+    svg {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.sign-in-container {
+  width: 90%;
+  margin: auto;
+  height: calc(100vh - 68px - 50px); // 100vh - header height - footer
+}
+
+.modal-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff6;
+  opacity: 1;
+  z-index: 10;
+  @include addPrefixes(transition, opacity 0.3s);
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@for $i from 0 through 9 {
+  $dot: ".";
+  $value: 1#{$dot}#{$i}em;
+  .icon-size-1#{$i} {
+    svg {
+      height: 100% !important;
+      width: $value !important;
+    }
+  }
+}
+
+@for $i from 0 through 9 {
+  $dot: ".";
+  $value: 2#{$dot}#{$i}em;
+  .icon-size-2#{$i} {
+    svg {
+      height: 100% !important;
+      width: $value !important;
+    }
+  }
+}
+
+.btn {
+  width: 8.73em;
+  min-height: 2.4em;
+  height: 2.4em;
+  border-radius: 2px;
+  font-weight: 600;
+  font-size: 0.93em;
+  text-align: center;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  user-select: none;
+
+  @include addPrefixes(transition, background-color 0.2s ease-in-out);
+
+  &-primary {
+    color: #ffffff;
+    @include setButtonColors($primary-color, 5);
+  }
+
+  &-primary-lighter {
+    color: #ffffff;
+    @include setButtonColors(#7d82ac, 7);
+  }
+
+  &-secondary {
+    color: #000000;
+    @include setButtonColors($secondary-color-darker, 2);
+  }
+
+  &-secondary-lighter {
+    color: #000000;
+    @include setButtonColors($secondary-color-lighter, 7);
+  }
+
+  &-neutral {
+    color: #000000;
+    @include setButtonColors(#ffffff, 5);
+  }
+
+  &-transparent {
+    background-color: rgba(0, 0, 0, 0);
+    color: #ffffff;
+    border: 2px solid $primary-color;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    &:disabled,
+    &:active {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &-tag {
+    border: 2px solid $primary-color;
+    width: fit-content;
+    padding: 7px 20px 7px 20px;
+    white-space: nowrap;
+    color: $primary-color;
+
+    &.btn-primary {
+      color: #ffffff;
+      &:active,
+      &:visited {
+        color: #ffffff;
+      }
+    }
+
+    &:not(.btn-primary) {
+      &:hover {
+        background-color: rgba(145, 145, 145, 0.05);
+      }
+      &:disabled,
+      &:active {
+        background-color: rgba(145, 145, 145, 0.15);
+      }
+    }
+  }
+
+  &-round {
+    border-radius: 1.23em;
+  }
+
+  & > .spinner-container {
+    font-size: 0.4em;
+  }
+}
+
+.notification {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  bottom: -200px;
+  font-size: 15px;
+  width: 100%;
+  z-index: 10;
+  @include addPrefixes(transition, all 1s cubic-bezier(0, 0, 0.29, 0.8));
+
+  .notification-text {
+    max-width: 90%;
+    text-align: center;
+    font-size: 0.933em;
+    letter-spacing: 1.25px;
+    width: fit-content;
+    padding: 0.5em 1.2em 0.5em 1.2em;
+    @include addPrefixes(box-shadow, 0px 2px 2px 1px rgba(0, 0, 0, 0.15));
+    border-radius: 14.2109px;
+    background-color: #ffffff;
+    text-transform: capitalize;
+  }
+
+  &.show {
+    opacity: 1;
+    display: flex;
+    bottom: 20px;
+    pointer-events: none;
+    @include addPrefixes(transition, all 1s cubic-bezier(0, 0.6, 0.4, 1));
+  }
+}
+
+.spinner-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 15px;
+  margin: 15px 0 15px 0;
+
+  &.h100 {
+    height: 100vh;
+    align-items: center;
+    margin: 0;
+  }
+
+  .spinner {
+    position: relative;
+    width: 4.27em;
+    height: 4.27em;
+    border: 0.35em solid #000000;
+    border-radius: 100%;
+    animation: spin 1s linear infinite;
+
+    &.light {
+      border-color: #ffffff;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1.6em;
+      height: 1.6em;
+      background-color: $secondary-color-darker;
+      border-radius: 100%;
+      right: -0.8em;
+      @include addPrefixes(box-shadow, 0px 0.27em 0.27em rgba(0, 0, 0, 0.25));
+    }
+  }
+}
+
+.form-control {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .input-control {
+    position: relative;
+    width: 100%;
+
+    .icon {
+      position: absolute;
+      width: 100%;
+      height: 2.1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 2;
+
+      svg {
+        position: absolute;
+        left: 0.93em;
+        height: 1em;
+        width: 1em;
+      }
+
+      :nth-child(2) {
+        right: 0.93em;
+        left: auto;
+      }
+    }
+
+    input {
+      width: 100%;
+      outline: none;
+      border: none;
+      font-family: "Roboto", sans-serif;
+    }
+  }
+}
+
+.user-img-rounded {
+  border-radius: 100%;
+  object-fit: cover;
+  cursor: pointer;
+
+  &.default {
+    background: rgb(243, 243, 243);
+    padding: 5px;
+
+    * {
+      pointer-events: none; // Helps me make clicking on the defalut user image go to user profile easier.
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      path {
+        fill: $secondary-color;
+      }
+    }
+  }
+
+  &.loading {
+    display: none;
+  }
+}
+
+.grid-sizer {
+  width: 50%; // Adjust For Home Page Masonry // 2 columns 50% 3 colums 33% etc for correct measurement
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 97.4%; // Adjust For Home Page Masonry
+  // border-top: 6px solid $secondary-color; maybe add later - border only on users unpublished work
+  @include addPrefixes(
+    box-shadow,
+    (0px 0px 2px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.25))
+  );
+  margin-bottom: 7px;
+  height: fit-content;
+  margin: 0 3px 10px 3px; // Adjust For Home Page Masonry
+  cursor: pointer;
+  user-select: none;
+
+  &.blog {
+    .card-img {
+      height: 6.733em;
+    }
+  }
+
+  &.book {
+    .card-img {
+      height: 11.467em;
+    }
+  }
+
+  .card-header {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+
+    .card-bookmark {
+      position: relative;
+      top: 0.333em;
+      right: 0.333em;
+      padding: 0.333em;
+      align-self: flex-end;
+      z-index: 1;
+
+      svg {
+        width: 0.965em;
+        height: 1.241em;
+        pointer-events: none;
+
+        path {
+          fill: none;
+        }
+      }
+
+      &.bookmarked {
+        svg > path {
+          fill: $secondary-color-darker;
+        }
+      }
+    }
+
+    .card-img {
+      top: 0;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .card-avatar,
+    .card-avatar .w-img {
+      height: 2em;
+      width: 2em;
+      margin: 0 0 10px 0;
+      align-self: center;
+      justify-self: center;
+      object-fit: cover;
+      background: #1a237e;
+      pointer-events: none;
+    }
+
+    .user-img {
+      align-self: center;
+    }
+
+    .card-avatar {
+      border: 2.7px solid #1a237e;
+    }
+
+    .card-type {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 0.733em;
+      color: $card-type-color;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &-content {
+    margin: 0 14px 20px 14px;
+    .card-title {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      word-break: break-word;
+      overflow: hidden;
+      font-weight: 400;
+      text-align: center;
+      font-size: 1em;
+      letter-spacing: 0.5px;
+    }
+    .post-pages {
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 0.733em;
+      color: $card-type-color;
+      letter-spacing: 0.5px;
+    }
+    .card-text {
+      font-family: "Times New Roman", Times, serif;
+      font-size: 0.733em;
+      font-weight: 700;
+      text-align: center;
+      color: #6f6f6f;
+      letter-spacing: 0.5px;
+      margin-top: 0.933em;
+      word-wrap: break-word;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  &-footer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 1.2em;
+    margin-bottom: 5px;
+    .card-views {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      .card-views-icon {
+        position: relative;
+        height: 1em;
+        display: flex;
+        align-items: center;
+        margin: 0 0.333em 0 0.333em;
+
+        svg {
+          width: 0.8em;
+          height: 0.52em;
+        }
+      }
+
+      .views {
+        position: relative;
+        color: $secondary-color-darker;
+        font-size: 0.666em;
+      }
+    }
+
+    .rating-stars {
+      width: 100%;
+      text-align: center;
+
+      svg {
+        width: 0.66em;
+        height: 0.72em;
+      }
+    }
+  }
+
+  .reading-progress {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 20px 10px 15px 10px;
+    .reading-progress-container {
+      position: relative;
+      width: 60%;
+      .reading-progress-bar {
+        position: absolute;
+        top: -2.5px;
+        height: 5px;
+        width: 100%;
+        background: #939393;
+        border-radius: 7px;
+      }
+
+      .reading-progress-fill {
+        position: absolute;
+        top: -2.5px;
+        height: 5px;
+        background: $secondary-color-darker;
+        border-radius: 7px;
+
+        &.read {
+          background: #00d008;
+        }
+      }
+    }
+
+    .dot-seperator {
+      height: 2px;
+      width: 2px;
+      border-radius: 100%;
+      background: $secondary-color-darker;
+      margin: 0 7px 2px 7px;
+    }
+
+    .minutes-read {
+      font-size: 0.666em;
+      letter-spacing: 0.5px;
+      color: $secondary-color-darker;
+      white-space: nowrap;
+    }
+  }
+
+  &.card-w-img {
+    border-top: none;
+    .user-img-rounded {
+      border: none;
+    }
+
+    .card-bookmark {
+      position: absolute;
+    }
+
+    .card-img {
+      margin-bottom: -1em;
+    }
+  }
+
+  &.ad {
+    border: none;
+    padding: 30px 10px 30px 10px;
+    background: linear-gradient(271.03deg, #9e65f0 19.06%, #ffa385 85.24%);
+
+    .ad-text {
+      font-weight: normal;
+      font-size: 1.933em;
+      text-align: center;
+      color: #fafafa;
+    }
+  }
+
+  &.library {
+    border: none;
+    .card-header {
+      .card-avatar {
+        margin-top: 19px;
+        // border: none;
+      }
+    }
+
+    .card-content {
+      height: 4em;
+      margin: 0 10px 0 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      overflow: hidden;
+
+      .post-pages {
+        margin: 7px;
+      }
+    }
+
+    .card-footer {
+      margin: 0;
+      .card-views {
+        .card-views-icon {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+}
+
+.create-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  position: fixed;
+  bottom: 156.25px; // footer height + toggle button 'bottom', height, and margin-top - margin-bottom from the create-menu-button
+  right: 16px;
+  z-index: 3;
+  pointer-events: none;
+
+  &.open {
+    pointer-events: auto;
+    .create-menu-buttons {
+      visibility: visible;
+      height: auto;
+      top: 0;
+      .create-menu-button {
+        height: 46.5px;
+        margin: 10.75px 4.75px 10.75px 0;
+        .create-menu-button-text {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .create-menu-buttons {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+    top: 30px;
+    height: 0;
+    visibility: hidden;
+
+    .create-menu-button {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-direction: row;
+      height: 0;
+      margin-right: 4.75px;
+      z-index: 4;
+      cursor: pointer;
+      @include addPrefixes(
+        transition,
+        all 0.3s cubic-bezier(0.11, 0.88, 0.42, 0.92)
+      );
+
+      .create-menu-button-icon {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        height: 46.5px;
+        width: 46.5px;
+        border-radius: 100%;
+        background: $secondary-color-darker;
+        @include addPrefixes(
+          box-shadow,
+          (
+            0px 0px 6.64371px rgba(0, 0, 0, 0.12),
+            0px 6.64371px 6.64371px rgba(0, 0, 0, 0.24)
+          )
+        );
+        z-index: 1;
+
+        svg {
+          width: 20px;
+          height: 20px;
+          path {
+            fill: #000000;
+            fill-opacity: 1;
+          }
+        }
+      }
+
+      .create-menu-button-text {
+        width: auto;
+        height: auto;
+        color: #000000;
+        background: #ffffff;
+        padding: 5px 10px 5px 10px;
+        margin-right: 5px;
+        font-size: 14px;
+        letter-spacing: 1.25px;
+        text-transform: uppercase;
+        opacity: 0;
+        @include addPrefixes(box-shadow, 0px 2px 2px rgba(0, 0, 0, 0.15));
+        @include addPrefixes(
+          transition,
+          opacity 0.3s cubic-bezier(0.11, 0.88, 0.42, 0.92)
+        );
+      }
+    }
+  }
+}
+
+.toggle-create-menu-button {
+  position: fixed;
+  bottom: 96px; // footer height + desired pixels away from footer
+  right: 16px;
+  height: 56px;
+  width: 56px;
+  border-radius: 100%;
+  background: $secondary-color-darker;
+  @include addPrefixes(
+    box-shadow,
+    (0px 0px 8px rgba(0, 0, 0, 0.12), 0px 8px 8px rgba(0, 0, 0, 0.24))
+  );
+  cursor: pointer;
+  z-index: 3;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 14px;
+    border-bottom: 2px solid #000000;
+    left: calc(50% - 7px);
+    top: 50%;
+    @include addPrefixes(transition, transform 0.3s ease-in-out);
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 14px;
+    border-bottom: 2px solid #000000;
+    transform: rotate(90deg);
+    left: calc(50% - 7px);
+    top: 50%;
+    @include addPrefixes(transition, transform 0.3s ease-in-out);
+  }
+
+  &.open {
+    &::before {
+      transform: rotate(180deg);
+    }
+
+    &::after {
+      transform: rotate(0deg);
+    }
+  }
+}
+
+.box-card {
+  display: flex;
+  height: fit-content;
+  background-color: #ffffff;
+  @include addPrefixes(
+    box-shadow,
+    (0px 0px 2px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.25))
+  );
+  padding: 10px;
+  width: 100%;
+  margin: 10px 0 10px 0;
+}
+
+.modal-wrapper {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  font-size: 15px;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 10;
+
+  &.hide {
+    display: none;
+  }
+}
+
+.modal {
+  background-color: #ffffff;
+  @include addPrefixes(
+    box-shadow,
+    (
+      0px 0px 15.8913px rgba(0, 0, 0, 0.22),
+      0px 15.8913px 15.8913px rgba(0, 0, 0, 0.3)
+    )
+  );
+  border-radius: 0.1em;
+  padding: 1em 0;
+  width: 90%;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes popOut {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@-webkit-keyframes popOut {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+// Media Query Mixins
+@mixin media320 {
+  @media screen and (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin media425 {
+  @media screen and (min-width: 425px) {
+    @content;
+  }
+}
+
+@mixin media600 {
+  @media screen and (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin media768 {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin media960 {
+  @media screen and (min-width: 960px) {
+    @content;
+  }
+}
+
+@mixin media1200 {
+  @media screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin media1600 {
+  @media screen and (min-width: 1600px) {
+    @content;
+  }
+}
+
+@mixin media1920 {
+  @media screen and (min-width: 1920px) {
+    @content;
+  }
+}
+
+@mixin media2560 {
+  @media screen and (min-width: 2560px) {
+    @content;
+  }
+}
+
+@mixin media3840 {
+  @media screen and (min-width: 3840px) {
+    @content;
+  }
+}

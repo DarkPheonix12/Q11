@@ -1,0 +1,453 @@
+.container-fluid {
+  * {
+    box-sizing: border-box;
+    font-family: Rubik, sans-serif;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  }
+
+  padding: 0 !important;
+  overflow: hidden;
+
+  @import "bootstrap";
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Rubik:wght@400;500;700&family=Simonetta&family=Spectral+SC&display=swap&family=Galada&display=swap");
+  #q {
+    font-family: "Galada", cursive;
+  }
+
+  .card {
+    cursor: auto;
+  }
+
+  .buttons {
+    position: absolute;
+    right: 75px;
+    top: -25px;
+
+    .btn-primary {
+      margin-right: 35px;
+      border-radius: 1.2em;
+      background-color: $primary-color;
+      border: 2px solid #ffffff;
+    }
+
+    .btn-secondary {
+      border-radius: 1.2em;
+      line-height: 1.65em;
+      background-color: $secondary-color-darker;
+      border: none;
+      color: #000000;
+    }
+  }
+
+  .landing-desktop {
+    background: url("/src/img/banner.png") no-repeat center;
+    background-size: cover;
+    height: 100vh;
+
+    ::-webkit-input-placeholder {
+      font-family: "Rubik", sans-serif;
+    }
+
+    #countdown {
+      font-family: "Rubik", sans-serif;
+      font-weight: bold;
+    }
+
+    .sign-up-button {
+      background: #000051;
+      color: white;
+      border-radius: 5px;
+      padding: 5px 15px;
+      margin-left: 5px;
+    }
+
+    .sign-up {
+      margin-top: 90px;
+
+      input {
+        @include addPrefixes(box-shadow, inset 0px 4px 4px rgba(0, 0, 0, 0.25));
+      }
+    }
+
+    .content {
+      padding-left: 40px;
+      padding-top: 50px;
+      color: white;
+
+      h2,
+      p {
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .introduction,
+  .be-curious,
+  .be-heard,
+  .be-together {
+    background: url("/src/img/yellow-bg-2.jpg") no-repeat center;
+    background-size: cover;
+    height: 100%;
+
+    li {
+      list-style: none;
+    }
+  }
+
+  .introduction {
+    padding-bottom: 100px;
+    height: 100%;
+
+    #title-Q {
+      font-family: "Simonetta", cursive;
+      letter-spacing: 1px;
+      color: #000051;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    #title-rest {
+      font-family: "Spectral SC", serif;
+      letter-spacing: 1px;
+      color: #000051;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    h3 {
+      font-weight: bold;
+      font-size: 48px;
+      line-height: 56px;
+      text-align: center;
+      letter-spacing: 0.02em;
+
+      color: #000051;
+    }
+
+    .container {
+      background-color: rgba(250, 250, 250, 0.95);
+      padding: 25px;
+    }
+
+    .icons-with-headline {
+      margin-top: 10px !important;
+    }
+  }
+
+  .services {
+    padding: 50px;
+
+    .icon {
+      padding: 20px 0;
+      height: 85px;
+    }
+
+    .headline {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+
+  .be-curious,
+  .be-heard,
+  .be-together {
+    padding: 50px 50px 0px 50px;
+
+    h5 {
+      font-size: 40px;
+    }
+
+    h3 {
+      font-size: 30px;
+    }
+
+    ul {
+      font-size: 25px;
+    }
+
+    img {
+      width: 500px;
+
+      margin-bottom: -22px;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+      span {
+        text-align: center;
+        font-weight: bold;
+        letter-spacing: 0.05em;
+      }
+    }
+
+    .section-info {
+      padding-top: 50px;
+    }
+
+    .card {
+      background: rgba(250, 250, 250, 0.7) !important;
+      margin-bottom: 50px;
+      width: 100%;
+
+      .card-text {
+        padding-left: 40px;
+      }
+    }
+  }
+
+  .be-curious {
+    img {
+      width: 500px;
+
+      margin-bottom: -28px;
+    }
+  }
+
+  .quote,
+  .quote-2 {
+    background-color: #000051;
+    padding: 100px;
+    color: #fafafa;
+    font-family: "Rubik", sans-serif;
+
+    h3 {
+      font-weight: bold;
+      font-size: 42px;
+      line-height: 57px;
+      letter-spacing: 0.05em;
+    }
+    span {
+      font-size: 22px;
+    }
+  }
+
+  .contact-us {
+    background-image: url("/src/img/contact-us.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 50px;
+  }
+
+  footer {
+    padding-top: 30px;
+    .social {
+      ul {
+        list-style: none;
+        li {
+          display: inline;
+          margin-right: 10px;
+          svg {
+            width: 25px;
+            height: 25px;
+          }
+        }
+      }
+    }
+
+    .fa-twitter {
+      color: #00acee;
+    }
+
+    .fa-facebook {
+      color: #3b5998;
+    }
+
+    .fa-linkedin {
+      color: #0e76a8;
+    }
+
+    .fa-instagram {
+      color: #f77737;
+    }
+
+    .fa-youtube {
+      color: #c4302b;
+    }
+
+    .copyrights {
+      svg {
+        position: relative;
+        margin-right: 8px;
+        top: -2px;
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    .quote,
+    .quote-2 {
+      padding: 80px;
+      h3 {
+        font-size: 38px;
+        line-height: 51.7px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .quote,
+    .quote-2 {
+      padding: 60px;
+      h3 {
+        font-size: 32px;
+        line-height: 43.5px;
+      }
+    }
+  }
+
+  @media (max-width: 617px) {
+    .be-curious,
+    .be-heard,
+    .be-together {
+      img {
+        width: 85%;
+      }
+    }
+  }
+
+  @media (max-width: 540px) {
+    .landing-desktop {
+      .content {
+        h2,
+        p {
+          white-space: initial;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .landing {
+      .introducing {
+        font-size: 40px;
+      }
+      .content {
+        padding-left: 10px;
+        color: white;
+      }
+      .sign-up-button {
+        width: 100%;
+      }
+    }
+
+    .introduction {
+      padding: 50px 5px;
+
+      h3 {
+        font-size: 20px;
+      }
+
+      img {
+        height: 50px;
+        width: 50px;
+      }
+
+      .container {
+        background-color: rgba(250, 250, 250, 0.95);
+        padding: 5px;
+      }
+
+      .icons-with-headline {
+        margin-top: 2px !important;
+      }
+
+      #title-Q {
+        font-size: 75px;
+      }
+
+      #title-rest {
+        font-size: 75px;
+      }
+    }
+
+    .services {
+      padding: 5px 50px;
+      .row {
+        text-align: left;
+      }
+    }
+
+    .be-curious,
+    .be-heard,
+    .be-together {
+      padding: 20px;
+      margin-bottom: 0px;
+
+      h5 {
+        font-size: 14px;
+      }
+
+      h3 {
+        font-size: 18px;
+      }
+
+      ul {
+        font-size: 16px;
+      }
+
+      img {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        margin-bottom: 20px;
+      }
+
+      .section-title {
+        margin-bottom: 10px;
+        span {
+          text-align: center;
+          font-size: 3rem;
+          font-weight: bold;
+          letter-spacing: 0.05em;
+        }
+      }
+
+      .section-info {
+        padding-top: 10px;
+      }
+    }
+
+    .be-heard {
+      .card {
+        margin-top: -27px;
+      }
+    }
+
+    .be-curious {
+      .card {
+        margin-top: -32px;
+      }
+    }
+
+    .be-together {
+      .card {
+        margin-top: -28px;
+      }
+    }
+
+    .quote,
+    .quote-2 {
+      padding: 20px;
+      h3 {
+        font-size: 22px;
+        line-height: 28px;
+        letter-spacing: 0.05em;
+      }
+      span {
+        font-size: 16px;
+      }
+    }
+
+    .contact-us {
+      padding: 20px;
+
+      h2 {
+        font-size: 18px;
+      }
+    }
+  }
+}

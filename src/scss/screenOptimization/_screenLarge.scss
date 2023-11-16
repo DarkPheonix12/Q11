@@ -1,0 +1,86 @@
+@include media1920 {
+  .btn,
+  .sign-in,
+  .footer,
+  .notification {
+    font-size: 17px;
+  }
+
+  .home,
+  .library,
+  .discuss,
+  .profile {
+    .home-cards,
+    .library-cards {
+      width: 70%;
+    }
+  }
+
+  .grid-sizer {
+    width: 20%;
+  }
+
+  .card {
+    width: 18%;
+  }
+
+  .container {
+    font-size: 20px;
+  }
+}
+
+@include media2560 {
+  .btn,
+  .sign-in,
+  .footer,
+  .notification {
+    font-size: 21px;
+  }
+
+  .sign-in {
+    h1 {
+      span {
+        &:after {
+          bottom: 15px;
+          left: 4.5px;
+        }
+      }
+    }
+  }
+
+  .grid-sizer {
+    width: 16.6667%;
+  }
+
+  .card {
+    width: 15.5%;
+  }
+
+  .container {
+    font-size: 25px;
+  }
+}
+
+@include media3840 {
+  .btn,
+  .sign-in,
+  .footer,
+  .notification {
+    font-size: 32px;
+  }
+
+  .container {
+    font-size: 32px;
+  }
+
+  .sign-in {
+    h1 {
+      span {
+        &:after {
+          bottom: 22px;
+          left: 7px;
+        }
+      }
+    }
+  }
+}

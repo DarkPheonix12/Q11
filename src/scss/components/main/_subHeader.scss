@@ -1,0 +1,59 @@
+.sub-header {
+  width: 100%;
+  @include addPrefixes(
+    box-shadow,
+    (0px 0px 0.3em rgba(0, 0, 0, 0.12), 0px 0.3em 0.3em rgba(0, 0, 0, 0.24))
+  );
+  .swiper-wrapper {
+    .swiper-slide {
+      width: 28%;
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .sub-header-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 3.07em;
+
+          .sub-header-icon-text {
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            margin-top: 0.4em;
+            font-weight: 600;
+            font-size: 0.62em;
+            margin-right: 0.07em;
+          }
+
+          svg {
+            height: 1.3em;
+            width: 100%;
+            @include addPrefixes(transition, all 0.2s ease-in-out);
+          }
+        }
+
+        &.current {
+          border-bottom: 0.13em solid $secondary-color-darker;
+          .sub-header-item {
+            svg {
+              path,
+              ellipse {
+                stroke-opacity: 1;
+                fill-opacity: 1;
+                @include addPrefixes(transition, all 0.2s ease-in-out);
+              }
+            }
+
+            p {
+              color: #ffffff;
+              @include addPrefixes(transition, all 0.2s ease-in-out);
+            }
+          }
+        }
+      }
+    }
+  }
+}

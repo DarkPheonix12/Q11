@@ -1,0 +1,53 @@
+@include media320 {
+  .card {
+    width: 47%;
+  }
+}
+
+@include media425 {
+  .card {
+    margin: 0 6px 10px 6px;
+  }
+}
+
+@include media600 {
+  .grid-sizer {
+    width: 33.333%;
+  }
+
+  .card {
+    width: 30.8%;
+    margin: 0 6px 10px 6px;
+  }
+}
+
+@include media768 {
+  .grid-sizer {
+    width: 33.333%;
+  }
+
+  .card {
+    width: 30.8%;
+    margin: 0 10px 10px 10px;
+  }
+
+  .container,
+  .notification {
+    font-size: 16px;
+  }
+}
+
+@include media960 {
+  .sign-in-container {
+    width: 75%;
+  }
+
+  .grid-sizer {
+    width: 25%;
+  }
+
+  .card {
+    width: 22.8%;
+    font-size: 19px;
+  }
+}

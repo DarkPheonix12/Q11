@@ -1,0 +1,189 @@
+.edit-post {
+  .post-header {
+    margin-right: 1em;
+    &-content {
+      width: 100%;
+    }
+  }
+  .post-header-content {
+    width: 100%;
+  }
+
+  .create-form {
+    .input-control {
+      margin: 0;
+      width: 100%;
+    }
+
+    input[name="title"] {
+      letter-spacing: 0.5px;
+      font-size: 1.33em;
+      font-weight: 500;
+      width: 100%;
+      background-color: $body-background-color;
+      color: $post-text-color-darker;
+    }
+  }
+
+  .post-info {
+    margin-bottom: 0;
+
+    &-last-updated {
+      font-size: 0.73em;
+      margin-bottom: 0.4em;
+    }
+
+    &-description {
+      .description-form {
+        font-size: 1.07em;
+        opacity: 0;
+        max-height: 0px;
+        @include addPrefixes(transition, all 0.3s);
+
+        textarea,
+        input {
+          position: relative;
+          width: 100%;
+          border: none;
+          background-color: $body-background-color;
+          font-weight: 500;
+          outline: none;
+          font-size: 1em;
+          resize: none;
+          color: $post-text-color;
+        }
+
+        input {
+          color: $primary-color;
+          &::placeholder {
+            color: rgba($primary-color, 0.4);
+          }
+        }
+
+        textarea {
+          margin-bottom: 0.35em;
+        }
+
+        .input {
+          width: 100%;
+        }
+      }
+
+      &.show {
+        .description-form {
+          max-height: 15em;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.post-overlay.post-edit-overlay {
+  align-items: flex-start;
+  .post-overlay-buttons {
+    top: 8em;
+
+    .btn {
+      svg {
+        height: 1.13em;
+        width: 1.13em;
+      }
+
+      &-neutral {
+        #q {
+          height: 1.8em;
+          width: 1.8em;
+
+          path {
+            fill: url(#gradient);
+
+            &:nth-child(2) {
+              fill: $secondary-color-lighter;
+            }
+          }
+        }
+      }
+
+      &-primary {
+        svg {
+          path {
+            fill: #ffffff;
+          }
+        }
+      }
+
+      &-secondary {
+        svg {
+          path {
+            fill: #000000;
+          }
+        }
+      }
+    }
+  }
+}
+
+// TinyMCE
+.mce-content-body {
+  border: none;
+  min-height: calc(100vh - 15em);
+  outline: none;
+}
+
+.tox {
+  border: none !important;
+  color: $post-text-color !important;
+  .tox-edit-area {
+    .tox-edit-area__iframe {
+      background-color: $body-background-color;
+
+      #tinymce {
+        margin-top: 0;
+      }
+    }
+  }
+
+  .tox-pop {
+    .tox-pop__dialog {
+      background-color: #292929;
+      overflow-x: auto;
+      overflow-y: hidden;
+      display: flex;
+      flex-wrap: nowrap;
+
+      .tox-tbtn--enabled {
+        background: #666666;
+      }
+
+      .tox-tbtn--disabled {
+        svg {
+          path {
+            fill: #686868;
+          }
+        }
+      }
+
+      .tox-tbtn__select-label {
+        color: $post-text-color-lighter;
+        font-size: 1.2em;
+        font-weight: bold;
+        position: relative;
+        top: -2px;
+      }
+
+      button[aria-disabled="false"],
+      button[aria-disabled="false"][aria-pressed="false"] {
+        &:hover {
+          background-color: $post-text-color-darker;
+        }
+      }
+
+      svg {
+        path {
+          fill: $post-text-color-lighter;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "production": "qalki-77a8d",
+    "dev": "qalki-dev",
+    "default": "qalki-dev"
+  }
+}

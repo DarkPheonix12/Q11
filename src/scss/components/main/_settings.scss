@@ -1,0 +1,89 @@
+.settings {
+  width: 93%;
+  padding: 0.93em 0 0.93em 0;
+  margin: 0 auto;
+
+  .settings-header {
+    font-size: 1em;
+    margin-bottom: 2em;
+    color: $primary-color;
+  }
+
+  .settings-item {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 1.3em;
+
+    .icon {
+      display: flex;
+      justify-content: center;
+      width: 2.8em;
+      margin-right: 2em;
+      svg {
+        height: 100%;
+        width: 1.07em;
+        path {
+          fill: $secondary-color-darker;
+          fill-opacity: 1;
+        }
+      }
+    }
+
+    &:nth-child(2) {
+      svg {
+        width: 1.4em;
+      }
+    }
+
+    .divider {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      width: 93%;
+    }
+
+    .settings-name {
+      font-size: 1.2em;
+    }
+
+    .settings-description {
+      color: rgba(0, 0, 0, 0.54);
+    }
+
+    &.w-btn {
+      height: auto;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      &:not(:last-child) {
+        margin-bottom: 2.67em;
+      }
+
+      .settings-info {
+        margin-right: 2em;
+      }
+
+      .btn {
+        font-size: 0.8em; // 12px
+        min-width: 6.67em;
+        width: 6.67em;
+        height: 2.67em;
+        border-radius: 3.5em;
+        color: #ffffff;
+
+        &.btn-on {
+          background-color: $secondary-color-dark-yellow;
+        }
+
+        &.btn-off {
+          background-color: rgba(0, 0, 0, 0);
+          color: $secondary-color-dark-yellow;
+          border: 1px solid $secondary-color-dark-yellow;
+        }
+      }
+    }
+  }
+}

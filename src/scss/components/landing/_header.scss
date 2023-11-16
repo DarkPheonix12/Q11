@@ -1,0 +1,33 @@
+.header {
+  position: relative;
+  display: flex;
+  padding: 16px 0 16px 0;
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+
+  &.dark {
+    .header-title {
+      color: #000000;
+    }
+
+    .header-button svg path {
+      fill: #000000;
+    }
+  }
+
+  .header-button {
+    display: flex;
+    align-items: center;
+    margin-left: 23px;
+    padding: 10px;
+  }
+
+  .header-title {
+    color: #ffffff;
+    margin-left: 22px;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+}

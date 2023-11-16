@@ -1,0 +1,61 @@
+.library {
+  .tag-list {
+    width: 100%;
+    .swiper-wrapper {
+      width: fit-content;
+      margin-right: 100%;
+      padding: 23px 0 23px 0;
+      .swiper-slide {
+        width: auto;
+        &:first-child {
+          margin-left: 10px;
+        }
+        &:last-child {
+          margin-right: 10px;
+        }
+      }
+    }
+    .btn {
+      font-size: 11.2px;
+      height: 26px;
+    }
+  }
+
+  .library-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: auto;
+    .card {
+      border: none;
+      .card-header {
+        .card-avatar {
+          margin-top: 19px;
+          // border: none;
+        }
+      }
+
+      .card-content {
+        height: 4em;
+        margin: 0 10px 0 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        overflow: hidden;
+
+        .post-pages {
+          margin: 7px;
+        }
+      }
+
+      .card-footer {
+        margin: 0;
+        .card-views {
+          .card-views-icon {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}

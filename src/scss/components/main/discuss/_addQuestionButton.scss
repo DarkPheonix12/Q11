@@ -1,0 +1,31 @@
+.discuss {
+  .add-question-button {
+    position: fixed;
+    height: 105px;
+    width: 105px;
+    background: $secondary-color-darker;
+    border-radius: 100%;
+    right: -47px;
+    bottom: 10px;
+    z-index: 2;
+
+    &::before {
+      position: absolute;
+      content: "";
+      width: 18px;
+      border-bottom: 2px solid #000000;
+      left: 26px;
+      top: 27%;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 18px;
+      border-bottom: 2px solid #000000;
+      transform: rotate(90deg);
+      left: 26px;
+      top: 27%;
+    }
+  }
+}

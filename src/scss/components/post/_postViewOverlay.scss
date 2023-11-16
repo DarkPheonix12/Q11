@@ -1,0 +1,491 @@
+.post-overlay {
+  position: fixed;
+  display: flex;
+  align-items: center;
+
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  top: 0;
+  left: 0;
+  z-index: 2;
+  @include addPrefixes(transition, opacity 0.3s);
+
+  $element-width: 70%;
+  $edge-offset: 1em;
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  * {
+    opacity: 1;
+    z-index: 2;
+
+    &.hide {
+      opacity: 0;
+      z-index: 1;
+    }
+  }
+
+  &-buttons {
+    position: relative;
+    left: 1.13em;
+    width: fit-content;
+
+    .btn {
+      width: 2.67em;
+      height: 2.67em;
+      border-radius: 50%;
+      opacity: 1;
+      @include addPrefixes(
+        box-shadow,
+        (0px 2px 2px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.12))
+      );
+
+      &:not(:last-child) {
+        margin-bottom: 1.2em;
+      }
+
+      svg {
+        path {
+          fill: #000000;
+        }
+      }
+
+      &-primary {
+        .btn-label {
+          color: $primary-color;
+        }
+      }
+
+      &-label {
+        position: absolute;
+        left: 3.7em;
+        background-color: #ffffff;
+        box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
+        border-radius: 0.99em;
+        padding: 0.5em 1em;
+        text-align: left;
+        white-space: nowrap;
+        font-size: 0.93em;
+      }
+    }
+  }
+
+  &-share {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    height: 2.5em;
+    width: 100%;
+    top: $edge-offset;
+    @include addPrefixes(transition, (top 0.3s, opacity 0.3s));
+
+    &.hide {
+      top: -2.5em;
+      opacity: 0;
+    }
+
+    .share {
+      display: flex;
+      position: relative;
+      align-items: center;
+      height: 100%;
+      width: $element-width;
+      margin: 0 auto;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 0.1em rgba(0, 0, 0, 0.12),
+        0px 0.1em 0.1em rgba(0, 0, 0, 0.24);
+      border-radius: 0.1em;
+
+      * {
+        display: flex;
+        align-items: center;
+        height: 100%;
+      }
+
+      *:not(:last-child) {
+        margin-right: 1em;
+      }
+
+      .icon {
+        width: 1.1em;
+        min-width: 1.1em;
+        margin-left: 0.73em;
+        position: relative;
+
+        svg {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .link {
+        font-size: 0.8em;
+        color: $card-type-color;
+        overflow: hidden;
+      }
+
+      .btn {
+        margin-left: auto;
+        width: 4.9em;
+        min-width: 4.9em;
+        font-size: 0.8em;
+        font-style: normal;
+        text-transform: none;
+        letter-spacing: normal;
+      }
+    }
+  }
+
+  &-search {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    height: 2.5em;
+    width: 100%;
+    top: $edge-offset;
+    @include addPrefixes(transition, (top 0.3s, opacity 0.3s));
+
+    &.hide {
+      top: -2.5em;
+      opacity: 0;
+    }
+
+    .form-control {
+      width: $element-width;
+      height: 2.2em;
+
+      .input-control {
+        height: 100%;
+        display: flex;
+
+        .x-icon {
+          box-sizing: content-box;
+          display: flex;
+          align-items: center;
+          position: absolute;
+          height: 100%;
+          width: 0.8em;
+          padding: 0 0.8em;
+          top: 0;
+          right: 0;
+
+          svg {
+            position: relative;
+            pointer-events: none;
+            width: 0.8em;
+            height: 0.8em;
+            right: 0;
+            left: 0;
+          }
+        }
+
+        .icon {
+          width: 2.5em;
+          z-index: 3;
+          left: 0;
+
+          &.search {
+            svg {
+              position: relative;
+              width: 50%;
+              height: 50%;
+              left: 0;
+            }
+          }
+        }
+
+        svg {
+          width: 0.76em;
+          height: 0.76em;
+
+          path {
+            fill: #a8a8a8da;
+          }
+        }
+
+        input {
+          height: 100%;
+          border: none;
+          padding-left: 3em;
+          padding-right: 10.5em;
+          box-shadow: 0px 0px 0.1em rgba(0, 0, 0, 0.12),
+            0px 0.1em 0.1em rgba(0, 0, 0, 0.24);
+          border-radius: 0.1em;
+        }
+
+        .match {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          right: 2.4em;
+          height: 100%;
+          top: 0;
+
+          &-status {
+            font-size: 0.7em;
+            margin-right: 1em;
+          }
+
+          &-buttons {
+            display: flex;
+            height: 100%;
+            &-up {
+              svg {
+                transform: rotate(180deg);
+              }
+            }
+
+            .btn {
+              height: 100%;
+              width: 2.2em;
+              margin-right: -1px;
+
+              svg {
+                path {
+                  fill: #000000;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &-color {
+    position: absolute;
+    display: flex;
+    left: 3.5em;
+    z-index: -1;
+    @include addPrefixes(transition, (left 0.3s, opacity 0.3s));
+
+    .color {
+      height: 1.8em;
+      width: 1.8em;
+      border: 0.2px solid #aaaaaa;
+      border-radius: 100%;
+      pointer-events: auto;
+
+      @include addPrefixes(
+        transition,
+        (transform 0.3s, margin-right 0.3s ease-out)
+      );
+
+      &:not(:last-child) {
+        margin-right: 1.1em;
+      }
+
+      &:hover,
+      &:active {
+        transform: scale(1.1);
+      }
+
+      &.white {
+        background-color: $body-background-color;
+      }
+
+      &.yellow {
+        background-color: #ffecbf;
+      }
+
+      &.gray {
+        background-color: #e7e7e7;
+      }
+
+      &.dark {
+        background-color: #343434;
+      }
+    }
+
+    &.hide {
+      left: 1em;
+      z-index: -1;
+
+      .color {
+        pointer-events: none;
+
+        &:not(:last-child) {
+          margin-right: -1em;
+        }
+      }
+    }
+  }
+
+  &-fontsize {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5em;
+    width: 100%;
+    bottom: ($edge-offset * 2);
+    @include addPrefixes(transition, (bottom 0.3s, opacity 0.3s));
+
+    .font-size {
+      width: $element-width;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 0.8em 0;
+
+      input[type="range"] {
+        $height: 2em;
+        $thumb-height: 1.1em;
+        $track-height: 3px;
+        --upper-color: #000000;
+
+        $upper-background: linear-gradient(
+            to bottom,
+            var(--upper-color),
+            var(--upper-color)
+          )
+          100% 50% / 100% $track-height no-repeat transparent;
+        $lower-background: linear-gradient(
+            to bottom,
+            $secondary-color,
+            $secondary-color
+          )
+          100% 50% / 100% $track-height no-repeat transparent;
+
+        // progress shadow
+        @function webkit-slider-thumb-shadow($i: 1) {
+          $val: #{$i}px 0 0 calc((-1.1em + 2px) / 2) var(--upper-color);
+          @if $i == 1 {
+            @for $k from 2 through 1000 {
+              $val: #{$val}, webkit-slider-thumb-shadow($k);
+            }
+          }
+          @return $val;
+        }
+
+        display: block;
+        appearance: none;
+        width: 100%;
+        margin: 0;
+        height: $height;
+        overflow: hidden;
+        cursor: pointer;
+        background: transparent;
+
+        &:focus {
+          outline: none;
+        }
+
+        // Webkit
+        &::-webkit-slider-runnable-track {
+          width: 100%;
+          height: $height;
+          background: $lower-background;
+        }
+
+        &::-webkit-slider-thumb {
+          position: relative;
+          appearance: none;
+          height: $thumb-height;
+          width: $thumb-height;
+          background: $secondary-color;
+          border-radius: 100%;
+          border: 0;
+          top: 50%;
+          margin-top: (-$thumb-height/2);
+          box-shadow: webkit-slider-thumb-shadow();
+          transition: background-color 150ms;
+        }
+
+        // Firefox
+        &::-moz-range-track,
+        &::-moz-range-progress {
+          width: 100%;
+          height: $height;
+          background: $upper-background;
+        }
+
+        &::-moz-range-progress {
+          background: $lower-background;
+        }
+
+        &::-moz-range-thumb {
+          appearance: none;
+          margin: 0;
+          height: $thumb-height;
+          width: $thumb-height;
+          background: $secondary-color;
+          border-radius: 100%;
+          border: 0;
+          transition: background-color 150ms;
+        }
+      }
+    }
+
+    &.hide {
+      bottom: -2.5em;
+    }
+  }
+
+  &-bookmarks {
+    position: absolute;
+    display: flex;
+    left: 3em;
+    max-width: 40vw;
+    overflow: hidden;
+    z-index: -1;
+    @include addPrefixes(transition, (left 0.3s, opacity 0.3s));
+
+    .swiper-container {
+      padding: 0.5em;
+    }
+
+    .swiper-slide {
+      width: fit-content;
+
+      &:not(:last-child) {
+        margin-right: 1.1em;
+      }
+
+      &:hover,
+      &:active {
+        transform: scale(1.1);
+      }
+
+      @include addPrefixes(
+        transition,
+        (transform 0.3s, margin-right 0.3s ease-out)
+      );
+    }
+
+    .bookmark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 1em;
+      width: 1em;
+      font-size: 0.67em;
+      padding: 1.345em;
+      border-radius: 100%;
+      pointer-events: auto;
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    &.hide {
+      left: 1em;
+      z-index: -1;
+      pointer-events: none;
+
+      .bookmark {
+        pointer-events: none;
+      }
+
+      .swiper-slide {
+        &:not(:last-child) {
+          margin-right: -0.4em;
+        }
+      }
+    }
+  }
+}
